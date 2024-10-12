@@ -1,9 +1,42 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const Navbar = () => {
     const location = useLocation();
+    const navigate = useNavigate();
+
+    const logout = () => {
+        Swal.fire({
+            text: "Are you sure you want to logout?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, logout!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    },
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "success logout",
+                }).then(() => {
+                    navigate("/");
+                });
+            }
+        });
+    };
 
     return (
         <div>
@@ -43,12 +76,13 @@ export const Navbar = () => {
                         >
                             Table
                         </Link>
-                        <Link
-                            className={` mx-8  text-white  hover:bg-blue-700 bg-blue-600 py-2 px-10 rounded-sm`}
-                            to={"/"}
+
+                        <button
+                            className="mx-8 text-white hover:bg-blue-700 bg-blue-600 py-2 px-10 rounded-sm"
+                            onClick={logout}
                         >
                             Logout
-                        </Link>
+                        </button>
                     </div>
                 </nav>
             </div>
