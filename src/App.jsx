@@ -5,8 +5,6 @@ import Menu from "./Page.jsx/Menu";
 import Table from "./Page.jsx/Table";
 import { Navbar } from "./components/Navbar";
 import React, { useState } from "react";
-import MyForm from "./components/Coba";
-
 
 function App() {
     const [food, setFood] = useState([]);
@@ -53,10 +51,6 @@ function App() {
                 </>
             ),
         },
-        {
-            path: "/coba",
-            element: <MyForm />
-        }
     ]);
 
     return (
