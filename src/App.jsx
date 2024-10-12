@@ -24,11 +24,11 @@ function App() {
     };
 
     const authLoader = async () => {
-        const email = localStorage.getItem("email");
-        const name = localStorage.getItem("name");
+        const email = localStorage.getItem("userEmail");
+        const password = localStorage.getItem("userPassword");
 
-        if (!email || !name) {
-            throw redirect("/login");
+        if (!email || !password) {
+            throw redirect("/");
         }
 
         return null;

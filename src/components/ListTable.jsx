@@ -7,11 +7,6 @@ export const ListTable = ({ dataList, deleteItem, editeItem }) => {
                 <h1 className="text-3xl">Table</h1>
             </div>
 
-            <button  onClick={() => setForm(true)} className="bg-blue-600 px-4 py-2 font-bold hover:bg-blue-700 text-white rounded-md ml-3">
-                Add Menu
-            </button>
-
-
             <div className="px-3 py-4 flex justify-center">
                 <table className="w-full text-md bg-white shadow-md rounded mb-4">
                     <tbody>
