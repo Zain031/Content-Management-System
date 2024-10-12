@@ -1,4 +1,4 @@
-import { RouterProvider } from "react-router-dom";
+import { RouterProvider, redirect } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 import { Login } from "./Page.jsx/Login";
 import Menu from "./Page.jsx/Menu";
@@ -23,6 +23,17 @@ function App() {
         setTable([...table, editItem]);
     };
 
+    const authLoader = async () => {
+        const email = localStorage.getItem("email");
+        const name = localStorage.getItem("name");
+
+        if (!email || !name) {
+            throw redirect("/login");
+        }
+
+        return null;
+    };
+
     const router = createBrowserRouter([
         {
             path: "/",
@@ -41,6 +52,7 @@ function App() {
                     />
                 </>
             ),
+            loader: authLoader,
         },
         {
             path: "/table",
@@ -50,6 +62,7 @@ function App() {
                     <Table date={table} />
                 </>
             ),
+            loader: authLoader,
         },
     ]);
 

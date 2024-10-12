@@ -17,6 +17,8 @@ export const Navbar = () => {
             confirmButtonText: "Yes, logout!",
         }).then((result) => {
             if (result.isConfirmed) {
+                localStorage.clear();
+
                 const Toast = Swal.mixin({
                     toast: true,
                     position: "top-end",
@@ -30,7 +32,7 @@ export const Navbar = () => {
                 });
                 Toast.fire({
                     icon: "success",
-                    title: "success logout",
+                    title: " logouting",
                 }).then(() => {
                     navigate("/");
                 });

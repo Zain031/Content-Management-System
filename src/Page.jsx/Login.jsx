@@ -35,6 +35,10 @@ export const Login = () => {
         event.preventDefault();
         if (validateEmail(email) && validatePassword(password)) {
             console.log("Login Success", email, password);
+
+            localStorage.setItem("userEmail", email);
+            localStorage.setItem("userPassword", password);
+
             navigate("/menu");
             const Toast = Swal.mixin({
                 toast: true,
@@ -48,7 +52,7 @@ export const Login = () => {
                 },
             });
             Swal.fire({
-                text: "Welocome To Warung Makan Bahari",
+                text: "Welcome To Warung Makan Bahari",
                 title: "Have fun!",
                 icon: "success",
             });
